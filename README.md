@@ -53,4 +53,4 @@ This project is licensed under the [MIT License](LICENSE)
 
 - This application is built with Diffusers, an awesome library provided by [HuggingFace](https://huggingface.co)
 
-<p text-align='center'><img src="https://github.com/HatmanStack/pixel-prompt-backend/blob/main/logo.png" alt="Image 4"></p>
+<p align="center"><img src="https://github.com/HatmanStack/pixel-prompt-backend/blob/main/logo.png" alt="Image 4"></p>

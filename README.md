@@ -51,4 +51,6 @@ This project is licensed under the [MIT License](LICENSE)
 
 ## Acknowledgments :trophy:
 
-- This application is built with Expo, a powerful framework for building cross-platform mobile applications. Learn more about Expo: [https://expo.io](https://expo.io)
+- This application is built with Diffusers, an awesome library provided by [HuggingFace](https://huggingface.co)
+
+<p text-align='center'><img src="https://github.com/HatmanStack/pixel-prompt-backend/blob/main/logo.png" alt="Image 4"></p>

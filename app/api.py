@@ -1,6 +1,7 @@
 import torch
 import fastapi
 import base64
+import requests
 import os
 from dotenv import load_dotenv
 from PIL import Image
@@ -20,6 +21,27 @@ class Item(BaseModel):
     steps: int
     guidance: float
     modelID: str
+
+class promptType(BaseModel):
+    prompt: str
+    modelID: str
+
+@app.post("/inferencePrompt")
+async def inferencePrompt(item: promptType):
+    input = item.prompt
+    modelID = item.modelID
+    API_URL = f'https://api-inference.huggingface.co/models/{modelID}'
+    headers = {"Authorization": f"Bearer {token}"}    
+    parameters = {"return_full_text":False,"max_new_tokens":300}
+    options = {"use_cache": False, "wait_for_model": True}
+    response = requests.post(API_URL, headers=headers, \
+        json={"inputs":input, "parameters": parameters,"options": options})
+        
+    if response.status_code != 200:
+        print(response.json().get("error_type"), response.status_code)
+        return {"error": response.json().get("error")}
+    
+    return response.json()
 
 @app.post("/api")
 async def inference(item: Item):
@@ -54,5 +76,3 @@ async def inference(item: Item):
         base64image = base64.b64encode(f.read())
     
     return {"output": base64image}
-
-

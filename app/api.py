@@ -1,3 +1,4 @@
+from fastapi import FastAPI, File, UploadFile
 import torch
 import fastapi
 import base64
@@ -5,10 +6,10 @@ import requests
 import os
 from dotenv import load_dotenv
 from PIL import Image
-from fastapi import FastAPI
 from pydantic import BaseModel
 from diffusers import StableDiffusionPipeline
 from io import BytesIO
+from typing import Optional
 
 load_dotenv()
 
@@ -44,8 +45,10 @@ async def inferencePrompt(item: promptType):
     return response.json()
 
 @app.post("/api")
-async def inference(item: Item):
-    print(item.prompt)
+async def inference(item: Item, image: Optional[UploadFile] = File(None)):
+    contents = None
+    if image:
+        contents = await image.read()
     if "stable-diffusion" in item.modelID:
         prompt = item.prompt
     if "dallinmackay" in item.modelID:
@@ -59,8 +62,12 @@ async def inference(item: Item):
     if "prompthero" in item.modelID:
         prompt = "mdjrny-v4 style, " + item.prompt 
 
-    negative_prompt = "blurry, low quality, ugly, deformed, malformed, lowres, mutant, mutated, disfigured, compressed, noise, artifacts, dithering, simple, watermark, text, font, signage, collage, pixel"
-    data = {"inputs":prompt, "negative_prompt": negative_prompt, "options":{"wait_for_model": True, "use_cache": False}}
+    negative_prompt = "text, watermark, lowres, low quality, worst quality, deformed, glitch, low contrast, noisy, saturation, blurry"
+    data = {"inputs": prompt, "negative_prompt": negative_prompt, "options": {"wait_for_model": True, "use_cache": False}}
+    if 'holder' not in item.scale.keys():
+        data["set_ip_adapter_scale"] = item.scale
+        data["ip_adapter_image"] = contents
+    
     if torch.cuda.is_available():
         pipe = StableDiffusionPipeline.from_pretrained(item.modelID,safety_checker=None,
             torch_dtype=torch.float16,

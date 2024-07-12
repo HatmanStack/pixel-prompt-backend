@@ -3,6 +3,11 @@
 This is the backend component of Pixel Prompt, a versatile application designed to handle a wide range of ML workloads. Built using FastAPI and Docker, this backend provides a robust and scalable foundation for hosting and managing ML models and associated APIs.
 
 It uses the StableDiffusionPipeline from huggingface to generate images using diffusion and works in conjunction with the frontend. 
+A blog post talking about the architecture can be found here: [Cloud Bound](https://medium.com/@HatmanStack/cloud-bound-react-native-and-fastapi-ml-684a658f967a).  
+
+## Preview :zap:
+
+To preview the application visit the hosted version on the Hugging Face Spaces platform [here](https://hatman-pixel-prompt.hf.space).
 
 ## Installation :hammer:
 

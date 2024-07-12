@@ -44,6 +44,8 @@ All the models are opensource and available on HuggingFace.
 ### Prompts
 
 - **mistralai/Mistral-7B-Instruct-v0.3**
+- **Gustavosta/MagicPrompt-Stable-Diffusion**
+- **meta-llama/Meta-Llama-3-70B-Instruct**
 
 ## License
 

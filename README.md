@@ -38,13 +38,16 @@ All the models are opensource and available on HuggingFace.
 
 ### Diffusion
 
+- **stabilityai/stable-diffusion-3-medium**
 - **stabilityai/stable-diffusion-xl-base-1.0**
-- **stabilityai/stable-diffusion-xl-refiner-1.0**
-- **prompthero/openjourney**
-- **dreamlike-art/dreamlike-photoreal-2.0**
-- **nitrosocke/Arcane-Diffusion**
+- **fluently/Fluently-XL-Final**
+- **nerijs/pixel-art-xl**
+- **Fictiverse/Voxel_XL_Lora**
 - **dallinmackay/Van-Gogh-diffusion**
-- **nousr/robo-diffusion**
+- **gsdf/Counterfeit-V2.5**
+- **digiplay/AbsoluteReality_v1.8.1**
+- **dreamlike-art/dreamlike-photoreal-2.0**
+- **digiplay/Acorn_Photo_v1**
 
 ### Prompts
 
